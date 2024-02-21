@@ -1,11 +1,10 @@
 // 依存性逆転の原則に違反しているコード
+// 依存性の注入(DI)
 import { AnimalRepository } from "../Infrastructure/AnimalRepository"
 
 export class Animal {
-  private animalRepository: AnimalRepository
-
-  constructor(private id: number) {
-    this.animalRepository = new AnimalRepository(id)
+  constructor(private animalRepository: AnimalRepository) {
+    this.animalRepository = animalRepository
   }
 
   get() {
